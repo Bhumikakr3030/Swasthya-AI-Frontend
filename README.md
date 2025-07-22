@@ -19,3 +19,20 @@ React.js / HTML5, CSS3, Tailwind CSS
 Hosted in: Firebase Studio (Cloud Workstation)
 
 Future integration: REST APIs / Firebase Backend
+cd your-project-folder        # Step into your project folder
+
+git init                      # Initialize Git repository (if not already)
+
+git remote add origin https://github.com/Bhumikakr3030/swasthya-ai-frontend.git
+
+git add .                     # Add all files
+
+git commit -m "Initial frontend push from Firebase Studio"
+
+git branch -M main            # Rename branch to main (in case it's 'master')
+
+git push -u origin main       # Push to GitHub
+
+git remote remove origin
+git remote add origin https://github.com/Bhumikakr3030/swasthya-ai-frontend.git
+
