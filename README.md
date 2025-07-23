@@ -1,6 +1,6 @@
 Swasthya AI is an AI-powered healthcare web application designed to provide intelligent symptom checking, teleconsultation access, and visual health insights for users. This project focuses on the frontend development of the platform using modern web technologies and a mobile-first design approach.
 
-[https://6000-firebase-studio-1752253103446.cluster-ys234awlzbhwoxmkkse6qo3fz6.cloudworkstations.dev/](https://app.visily.ai/projects/c3ce44a4-bbae-471b-a091-d4555a9761fd/boards/2065419/presenter?startingPointId=879465379&play-mode=Prototype)
+(https://app.visily.ai/projects/c3ce44a4-bbae-471b-a091-d4555a9761fd/boards/2065419/presenter?startingPointId=879465379&play-mode=Prototype)
 
 🚀 Features:
 🧠 AI-based Symptom Checker UI
