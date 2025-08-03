@@ -1,6 +1,5 @@
 Swasthya AI is an AI-powered healthcare web application designed to provide intelligent symptom checking, teleconsultation access, and visual health insights for users. This project focuses on the frontend development of the platform using modern web technologies and a mobile-first design approach.
 
-https://app.visily.ai/projects/c3ce44a4-bbae-471b-a091-d4555a9761fd/boards/2065581/presenter?play-mode=Prototype&startingPointId=879508927
 
 🚀 Features:
 🧠 AI-based Symptom Checker UI
@@ -33,6 +32,4 @@ git branch -M main            # Rename branch to main (in case it's 'master')
 
 git push -u origin main       # Push to GitHub
 
-git remote remove origin
-git remote add origin https://github.com/Bhumikakr3030/swasthya-ai-frontend.git
 
