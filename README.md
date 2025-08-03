@@ -22,7 +22,7 @@ cd your-project-folder        # Step into your project folder
 
 git init                      # Initialize Git repository (if not already)
 
-git remote add origin https://github.com/Bhumikakr3030/swasthya-ai-frontend.git
+
 
 git add .                     # Add all files
 
