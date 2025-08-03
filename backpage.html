@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwasthyaAI - AI Health Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #fecaca 0%, #fee2e2 100%);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="flex items-center">
+            <span class="text-red-600 font-bold text-2xl">SwasthyaAI</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-red-500 font-medium">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-red-500 font-medium">About</a>
+          <a href="blog.html" class="text-gray-700 hover:text-red-500 font-medium">Blog</a>
+          <a href="developer.html" class="text-gray-700 hover:text-red-500 font-medium">Team</a>
+          <a href="dashboard.html" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 font-medium">Dashboard</a>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button class="outline-none mobile-menu-button">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="hidden mobile-menu md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-red-500">Home</a>
+        <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-red-500">About</a>
+        <a href="blog.html" class="block px-3 py-2 text-gray-700 hover:text-red-500">Blog</a>
+        <a href="developer.html" class="block px-3 py-2 text-gray-700 hover:text-red-500">Team</a>
+        <a href="dashboard.html" class="block px-3 py-2 text-red-600 font-medium">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Your AI-Powered Health Companion</h1>
+          <p class="text-lg text-gray-600 mb-8">Early symptom detection and personalized health insights powered by artificial intelligence.</p>
+          <div class="flex space-x-4">
+            <a href="dashboard.html" class="px-6 py-3 bg-red-600 text-white rounded-md hover:bg-red-700 font-medium">Try Symptom Checker</a>
+            <a href="about.html" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 font-medium">Learn More</a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="C:\Users\DELL\Pictures\swa.jpg" alt="AI Health Assistant" class="rounded-lg shadow-xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How SwasthyaAI Helps You</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+          <div class="text-red-500 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Symptom Analysis</h3>
+          <p class="text-gray-600">Our AI cross-references your symptoms with medical databases to identify potential conditions.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+          <div class="text-red-500 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Personalized Reports</h3>
+          <p class="text-gray-600">Get detailed health reports with risk assessments and recommended actions.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+          <div class="text-red-500 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Early Detection</h3>
+          <p class="text-gray-600">Identify potential health issues before they become serious with predictive analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-red-600 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to Take Control of Your Health?</h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of users who are making informed health decisions with SwasthyaAI.</p>
+      <a href="dashboard.html" class="px-8 py-3 bg-white text-red-600 rounded-md font-bold hover:bg-gray-100 inline-block">Get Started Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">SwasthyaAI</h3>
+          <p class="text-gray-400">Empowering health decisions through artificial intelligence.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+            <li><a href="about.html" class="text-gray-400 hover:text-white">About</a></li>
+            <li><a href="blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+            <li><a href="developer.html" class="text-gray-400 hover:text-white">Our Team</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Contact Us</h4>
+          <p class="text-gray-400 mb-2">hello@swathyaai.com</p>
+          <p class="text-gray-400">+1 (555) 123-4567</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2023 SwasthyaAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.querySelector('.mobile-menu-button');
+    const menu = document.querySelector('.mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
