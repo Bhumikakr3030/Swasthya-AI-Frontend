@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwasthyaAI – Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style> body { font-family: 'Poppins', sans-serif; background: #f8fafc; } </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Top bar -->
+<header class="bg-white shadow-md p-4 flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <img src="C:\Users\DELL\Pictures\swa.jpg" alt="Logo" class="w-8 h-8 rounded-full">
+    <span class="text-xl font-bold text-red-600">SwasthyaAI</span>
+  </div>
+  <nav class="flex gap-3">
+    <a href="bp.html" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Home</a>
+    <a href="bpback.html" class="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200">Back</a>
+  </nav>
+</header>
+
+<!-- Login form -->
+<main class="flex items-center justify-center h-screen">
+  <form action="bp.html" method="GET" class="bg-white p-6 rounded-xl shadow-md w-full max-w-sm">
+    <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
+    <label class="block mb-2 text-sm">Username</label>
+    <input type="text" name="username" class="w-full p-2 border rounded-lg mb-3" required>
+    
+    <label class="block mb-2 text-sm">Password</label>
+    <input type="password" name="password" class="w-full p-2 border rounded-lg mb-3" required>
+    
+    <button type="submit" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Login</button>
+    <p class="mt-4 text-center text-sm">Don’t have an account? <a href="signup.html" class="text-red-600">Sign Up</a></p>
+  </form>
+</main>
+</body>
+</html>
