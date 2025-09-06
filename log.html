@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwasthyaAI Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login-header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .login-header h2 {
+      margin-top: 10px;
+      color: #d32f2f;
+    }
+    label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 500; }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
+    }
+    .btn-red {
+      width: 100%; background-color: #d32f2f; color: white; padding: 12px;
+      border: none; border-radius: 6px; margin-top: 20px; font-weight: 600;
+      cursor: pointer; transition: background-color 0.3s;
+    }
+    .btn-red:hover { background-color: #b71c1c; }
+    .login-footer { text-align: center; margin-top: 15px; font-size: 14px; }
+    .login-footer a { color: #d32f2f; text-decoration: none; }
+    .login-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-header">
+      <img src="C:\Users\DELL\Pictures\swa.jpg" alt="Logo">
+      <h2>SwasthyaAI Login</h2>
+    </div>
+    <form action="dashboard.html" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="btn-red">Login</button>
+    </form>
+
+    <div class="login-footer">
+      Don't have an account? <a href="signin.html">Sign up</a>
+    </div>
+  </div>
+
+</body>
+</html>
