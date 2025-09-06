@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwasthyaAI – Smart Health Assistant</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #f8fafc; }
+    .gradient-bg { background: linear-gradient(135deg, #fecaca 0%, #fee2e2 100%); }
+    #chatbox {
+      height: 300px; /* Reduced from 400px */
+      background: white;
+      border-radius: 0.75rem;
+      padding: 0.75rem; /* Reduced from 1rem */
+      overflow-y: auto;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .user-message {
+      background: #eff6ff;
+      border-radius: 1rem 1rem 0 1rem;
+      padding: 0.5rem 0.75rem; /* Reduced from 0.75rem 1rem */
+      margin-left: auto;
+      max-width: 80%;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem; /* Added font size */
+    }
+    .bot-message {
+      background: #f3f4f6;
+      border-radius: 1rem 1rem 1rem 0;
+      padding: 0.5rem 0.75rem; /* Reduced from 0.75rem 1rem */
+      max-width: 80%;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem; /* Added font size */
+    }
+    .symptom-chip {
+      display: inline-flex;
+      align-items: center;
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 0.2rem 0.6rem; /* Reduced from 0.25rem 0.75rem */
+      border-radius: 9999px;
+      margin: 0.2rem; /* Reduced from 0.25rem */
+      font-size: 0.8rem; /* Reduced from 0.875rem */
+    }
+    .section-card {
+      padding: 1rem; /* Reduced from 1.5rem */
+      margin-bottom: 1rem; /* Reduced from 1.5rem */
+    }
+    .input-field {
+      padding: 0.5rem 0.75rem; /* Reduced from 0.75rem 1rem */
+      font-size: 0.9rem;
+    }
+    .btn {
+      padding: 0.5rem 1rem; /* Reduced from 0.75rem 1.5rem */
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div class="flex min-h-screen">
+
+    <!-- Top Bar -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 py-1"> <!-- Reduced padding -->
+      <div class="p-1 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
+        <!-- Logo + Title -->
+        <div class="flex items-center gap-2"> <!-- Reduced gap -->
+          <img src="C:\Users\DELL\Pictures\swa.jpg" alt="Logo" class="w-6 h-6 rounded-full"> <!-- Reduced size -->
+          <span class="text-lg font-bold text-red-600">SwasthyaAI Tools</span> <!-- Reduced text size -->
+        </div>
+
+        <!-- Navigation Buttons -->
+        <nav class="flex flex-wrap gap-2 mt-2 md:mt-0"> <!-- Reduced gap and margin -->
+          <a href="backpage.html" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 text-sm"> <!-- Reduced padding and text -->
+            Back
+          </a>
+          <a href="login.html" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 text-sm">
+            Login
+          </a>
+          <a href="dashboard.html" class="px-3 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm">
+            Dashboard
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-md hidden md:block fixed h-full"> <!-- Reduced width from w-60 -->
+      <div class="p-2 flex items-center space-x-2"> <!-- Reduced padding and gap -->
+        <img src="logo.png" alt="Logo" class="w-6 h-6 rounded-full"/> <!-- Reduced size -->
+        <span class="text-lg font-bold text-red-600">SwasthyaAI</span> <!-- Reduced text size -->
+      </div>
+      <nav class="p-2 space-y-2"> <!-- Reduced padding and gap -->
+        <a href="#" class="block px-2 py-1 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm"> <!-- Reduced padding and text -->
+          <i class="fas fa-tachometer-alt mr-1"></i> Dashboard
+        </a>
+        <a href="#symptom-section" class="block px-2 py-1 rounded-lg bg-red-50 text-red-600 font-medium text-sm">
+          <i class="fas fa-stethoscope mr-1"></i> Symptom Checker
+        </a>
+        <a href="#doctor-section" class="block px-2 py-1 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm">
+          <i class="fas fa-user-md mr-1"></i> Teleconsulation
+        </a>
+        <a href="#chatbot-section" class="block px-2 py-1 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm">
+          <i class="fas fa-robot mr-1"></i> AI Assistant
+        </a>
+        <a href="#" class="block px-2 py-1 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm">
+          <i class="fas fa-pills mr-1"></i> Medicine Reminder
+        </a>
+      </nav>
+      <div class="absolute bottom-0 left-0 right-0 p-2 border-t"> <!-- Reduced padding -->
+        <div class="flex items-center space-x-2"> <!-- Reduced gap -->
+          <img src="file:///C:/Users/DELL/Pictures/girl.png" class="w-6 h-6 rounded-full" alt="User"> <!-- Reduced size -->
+          <div>
+            <p class="font-medium text-sm">Bhumika KR</p> <!-- Reduced text size -->
+            <p class="text-xs text-gray-500">Patient</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-0 md:ml-56 p-4">
+     <!-- Welcome Section -->
+	<div class="gradient-bg rounded-xl shadow-md p-6 mb-6 flex flex-col md:flex-row justify-between items-center">
+  		<div class="md:w-2/3">
+    		<h3 class="text-2xl md:text-3xl font-bold text-gray-900">Dear Bhumika,</h3>
+		<h3 class="text-2xl md:text-3xl font-bold text-gray-900">Welcome to SwasthyaAI</h3>
+    		<p class="text-gray-700 mt-2">An AI-powered health assistant for smart, accessible, and early diagnosis. Built for India.</p>          	<div class="flex space-x-3 mt-4">
+            <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
+              Quick Checkup
+            </button>
+            <button class="px-4 py-2 border border-red-600 text-red-600 rounded-lg hover:bg-red-50 font-medium">
+              View History
+            </button>
+          </div>
+        </div>
+        <img src="C:\Users\DELL\Pictures\swa.jpg" alt="Health Illustration" class="w-24 h-24 md:w-32 md:h-32 mt-4 md:mt-0">
+      </div>
+      <!-- Symptom Checker -->
+      <div id="symptom-section" class="bg-white rounded-xl shadow-md p-4 mb-4"> <!-- Reduced padding and margin -->
+        <div class="flex items-center justify-between mb-2"> <!-- Reduced margin -->
+          <h3 class="text-lg font-semibold text-gray-800">Symptom Checker</h3> <!-- Reduced text size -->
+          <div class="text-xs text-gray-500">Powered by AI</div> <!-- Reduced text size -->
+        </div>
+        
+        <div class="mb-2"> <!-- Reduced margin -->
+          <div class="flex flex-wrap" id="selected-symptoms">
+            <!-- Selected symptoms will appear here -->
+          </div>
+        </div>
+        
+        <form id="symptomForm" class="space-y-2"> <!-- Reduced gap -->
+          <div class="relative">
+            <input type="text" id="symptomInput" class="w-full p-2 pl-8 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-sm" placeholder="Search symptoms (e.g., fever, headache)..."> <!-- Reduced padding and text -->
+            <div class="absolute left-2 top-2 text-gray-400"> <!-- Adjusted position -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <!-- Reduced icon size -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1" id="common-symptoms"> <!-- Reduced gap -->
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Fever</button> <!-- Reduced padding and text -->
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Headache</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Cough</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Fatigue</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Nausea</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Dizziness</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">Body Pain</button>
+            <button type="button" class="symptom-btn px-2 py-1 bg-gray-100 hover:bg-red-100 text-gray-800 rounded-lg text-xs">More...</button>
+          </div>
+          
+          <div class="flex justify-between items-center">
+            <div class="text-xs text-gray-500">Select 3+ symptoms for better analysis</div> <!-- Reduced text size -->
+            <button type="submit" class="px-4 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium flex items-center text-sm"> <!-- Reduced padding and text -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"> <!-- Reduced icon size -->
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+              Analyze
+            </button>
+          </div>
+        </form>
+        
+        <div id="symptomResult" class="mt-4 p-3 bg-blue-50 rounded-lg hidden"> <!-- Reduced margin and padding -->
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-semibold text-gray-800 text-sm">Possible Conditions</h4> <!-- Reduced text size -->
+              <div class="mt-1 space-y-1"> <!-- Reduced margin and gap -->
+                <div class="flex items-center text-sm"> <!-- Reduced text size -->
+                  <div class="w-2 h-2 bg-red-600 rounded-full mr-1"></div> <!-- Reduced margin -->
+                  <span>Common Cold (65% match)</span>
+                </div>
+                <div class="flex items-center text-sm">
+                  <div class="w-2 h-2 bg-orange-400 rounded-full mr-1"></div>
+                  <span>Seasonal Flu (42% match)</span>
+                </div>
+              </div>
+            </div>
+            <button class="text-blue-600 hover:text-blue-800 text-xs font-medium">View Details</button> <!-- Reduced text size -->
+          </div>
+          
+          <div class="mt-2 pt-2 border-t border-gray-200"> <!-- Reduced margin -->
+            <h4 class="font-semibold text-gray-800 text-sm">Recommended Actions</h4> <!-- Reduced text size -->
+            <ul class="mt-1 space-y-1 text-xs"> <!-- Reduced margin, gap, and text -->
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mt-0.5 mr-1 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <!-- Reduced icon size -->
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Rest and drink plenty of fluids</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mt-0.5 mr-1 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Consider over-the-counter pain relievers</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mt-0.5 mr-1 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Seek medical attention if symptoms worsen</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMI Checker -->
+      <section id="bmi-section" class="bg-white rounded-xl shadow-md p-4 mb-4"> <!-- Reduced padding and margin -->
+        <h2 class="text-lg font-semibold mb-2">BMI Checker</h2> <!-- Reduced text size and margin -->
+        <input type="number" id="bmi-height" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Height (cm)"> <!-- Reduced padding, margin, and text -->
+        <input type="number" id="bmi-weight" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Weight (kg)">
+        <button onclick="calcBMI()" class="px-4 py-1 bg-red-600 text-white rounded-lg text-sm">Check BMI</button> <!-- Reduced padding and text -->
+        <div id="bmi-result" class="mt-2 p-2 bg-gray-100 rounded-lg text-sm"></div> <!-- Reduced margin, padding, and text -->
+      </section>
+
+      <!-- BP & Sugar -->
+      <section id="bp-section" class="bg-white rounded-xl shadow-md p-4 mb-4">
+        <h2 class="text-lg font-semibold mb-2">BP & Blood Sugar Analyser</h2>
+        <input type="number" id="bp-sys" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Systolic">
+        <input type="number" id="bp-dia" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Diastolic">
+        <input type="number" id="sugar" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Sugar (mg/dL)">
+        <button onclick="checkBP()" class="px-4 py-1 bg-red-600 text-white rounded-lg text-sm">Check</button>
+        <div id="bp-result" class="mt-2 p-2 bg-gray-100 rounded-lg text-sm"></div>
+      </section>
+
+     <!-- Teleconsultation -->
+      <section id="tele-section" class="bg-white rounded-xl shadow-md p-4 mb-4">
+        <h2 class="text-lg font-semibold mb-2">Teleconsultation</h2>
+        <input type="number" id="pin" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="Pincode">
+        <input type="text" id="city" class="w-full p-2 border rounded-lg mb-2 text-sm" placeholder="City">
+        <button onclick="listHospitals()" class="px-4 py-1 bg-red-600 text-white rounded-lg text-sm">Find Hospitals</button>
+        <div id="hospitals" class="mt-2"></div>
+      </section>
+
+      <!-- AI Chatbot Section -->
+      <div id="chatbot-section" class="bg-white rounded-xl shadow-md p-4">
+        <div class="flex items-center justify-between mb-2"> <!-- Reduced margin -->
+          <h3 class="text-lg font-semibold text-gray-800">AI Health Assistant</h3> <!-- Reduced text size -->
+          <div class="flex space-x-1"> <!-- Reduced gap -->
+            <button id="clearChatBtn" class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-xs"> <!-- Reduced padding and text -->
+              Clear Chat
+            </button>
+            <button id="endConvBtn" class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-xs">
+              End Conversation
+            </button>
+          </div>
+        </div>
+        
+        <div id="chatbox" class="mb-2"> <!-- Reduced margin -->
+          <div class="bot-message">
+            <div class="font-medium text-red-600 mb-1 text-sm">SwasthyaAI</div> <!-- Reduced text size -->
+            <div>Hello! I'm your AI health assistant. How can I help you today?</div>
+          </div>
+          <div class="bot-message">
+            <div class="font-medium text-red-600 mb-1 text-sm">SwasthyaAI</div>
+            <div>You can ask me about symptoms, medications, or general health advice.</div>
+          </div>
+        </div>
+        
+        <form id="chatForm" class="flex gap-1" onsubmit="onChatSubmit(event)"> <!-- Reduced gap -->
+          <input type="text" id="userInput" class="flex-1 p-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-sm" placeholder="Type your health question..." autocomplete="off" required/> <!-- Reduced padding and text -->
+          <button type="submit" class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg" aria-label="Send"> <!-- Reduced padding -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"> <!-- Reduced icon size -->
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- JS -->
+  <script>
+    // ---------- Symptom Checker ----------
+    const symptomForm = document.getElementById('symptomForm');
+    const symptomInput = document.getElementById('symptomInput');
+    const selectedSymptoms = document.getElementById('selected-symptoms');
+    const symptomResult = document.getElementById('symptomResult');
+    const commonSymptoms = document.querySelectorAll('.symptom-btn');
+    let symptoms = [];
+
+    commonSymptoms.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const symptom = btn.textContent.trim();
+        if (!symptoms.includes(symptom)) {
+          symptoms.push(symptom);
+          updateSelectedSymptoms();
+        }
+      });
+    });
+
+    symptomInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && symptomInput.value.trim()) {
+        e.preventDefault();
+        const symptom = symptomInput.value.trim();
+        if (!symptoms.includes(symptom)) {
+          symptoms.push(symptom);
+          updateSelectedSymptoms();
+          symptomInput.value = '';
+        }
+      }
+    });
+
+    function updateSelectedSymptoms() {
+      selectedSymptoms.innerHTML = symptoms.map(symptom => {
+        return `<div class="symptom-chip">
+                  <span>${escapeHtml(symptom)}</span>
+                  <button onclick="removeSymptom('${escapeJs(symptom)}')" class="ml-1 text-red-600 hover:text-red-800 bg-transparent border-0 text-sm leading-none">&times;</button>
+                </div>`;
+      }).join('');
+    }
+
+    // helpers to avoid breaking quotes in HTML injection
+    function escapeJs(s) {
+      return s.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+    function escapeHtml(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    window.removeSymptom = function(symptom) {
+      // symptom passed in is escaped for JS; unescape single quotes
+      const unescaped = symptom.replace(/\\'/g, "'").replace(/\\"/g, '"');
+      symptoms = symptoms.filter(s => s !== unescaped);
+      updateSelectedSymptoms();
+    }
+
+    symptomForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (symptoms.length < 3) {
+        alert('Please select at least 3 symptoms for accurate analysis.');
+        return;
+      }
+      symptomResult.classList.add('hidden');
+      // simulate API processing
+      setTimeout(() => {
+        symptomResult.classList.remove('hidden');
+        symptomResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 800);
+    });
+
+    // ---------- Utilities (BMI, BP, Hospitals) ----------
+    function calcBMI(){
+      let h = parseFloat(document.getElementById('bmi-height').value) / 100;
+      let w = parseFloat(document.getElementById('bmi-weight').value);
+      if(!h || !w){ alert("Enter valid values"); return; }
+      let bmi = (w/(h*h)).toFixed(1);
+      let status = bmi<18.5 ? 'Underweight' : bmi<24.9 ? 'Normal' : bmi<29.9 ? 'Overweight' : 'Obese';
+      document.getElementById('bmi-result').innerHTML = `BMI: ${bmi} — ${status}`;
+    }
+
+    function checkBP(){
+      let sys = parseFloat(document.getElementById('bp-sys').value);
+      let dia = parseFloat(document.getElementById('bp-dia').value);
+      let sugar = parseFloat(document.getElementById('sugar').value);
+      if(isNaN(sys) || isNaN(dia) || isNaN(sugar)){ alert("Enter valid values"); return; }
+      let res = (sys<90||dia<60) ? 'Low BP' : (sys>140||dia>90) ? 'High BP' : 'BP Normal';
+      res += ', ' + (sugar<70 ? 'Low Sugar' : sugar>140 ? 'High Sugar' : 'Sugar Normal');
+      document.getElementById('bp-result').innerHTML = res;
+    }
+
+    function listHospitals(){
+  let pin = document.getElementById('pin').value.trim();
+  let city = document.getElementById('city').value.trim().toLowerCase();
+
+  if(!pin && !city) {
+    alert("Please enter either pincode or city to search");
+    return;
+  }
+
+  const hospitalData = [
+    { name: "Abhaya Hospital", address: "17 Dr. M.H. Mari Gowda Road(Hosur Road), Opp. Park Area Wilson Garden", city: "Bengaluru", state: "Karnataka", pincode: "560027" },
+    { name: "Bangalore Hospital", address: "No.202. R.V. Road, South End Circle Jayanagar", city: "Bengaluru", state: "Karnataka", pincode: "560004" },
+    { name: "Healthcare Global Enterprises (HCG)", address: "44-45/2 2nd Cross, R R Mohan Roy Ext", city: "Bengaluru", state: "Karnataka", pincode: "560027" },
+    { name: "Chaitanya Hospital", address: "80, P & T Colony, Rt Nagar", city: "Bengaluru", state: "Karnataka", pincode: "560032" },
+    { name: "Chord Road Hospital", address: "#100 Bhimajyothi, Lic Colony, Woc Road, Basaveshawaranagar", city: "Bengaluru", state: "Karnataka", pincode: "560079" },
+    { name: "Citi Hospital", address: "25/91 Chord Road 11 Block Rajajinagar", city: "Bengaluru", state: "Karnataka", pincode: "560010" },
+    { name: "Hosmat Hospital", address: "45 Magrath Road Off Richmond Road", city: "Bengaluru", state: "Karnataka", pincode: "560001" },
+    { name: "Sapathagiri Hospital", address: "Bengaluru Branch:Shree Sapthagiri Super Speciality Hospitals # 15, Hesarghatta Rd, Navy Layout, Chikkasandra, Chikkabanavara" ,city: "Bengaluru", state: "Karnataka", pincode: "560090" }
+    // More from PDF...
+  ];
+
+  let filteredHospitals = hospitalData.filter(h =>
+    (pin && h.pincode === pin) ||
+    (city && h.city.toLowerCase().includes(city))
+  );
+
+  const resultsContainer = document.getElementById('hospitals');
+  if(filteredHospitals.length === 0) {
+    resultsContainer.innerHTML = `
+      <div class="p-4 bg-gray-50 rounded-lg text-center text-gray-600">
+        No hospitals found for your search.
+      </div>
+    `;
+    return;
+  }
+
+  let html = '';
+  filteredHospitals.forEach(h => {
+    html += `
+      <div class="p-3 bg-white border rounded-lg shadow-sm mb-2">
+        <strong class="text-red-600">${h.name}</strong><br>
+        <span class="text-gray-700 text-sm">${h.address}</span><br>
+        <span class="text-gray-500 text-xs">${h.city}, ${h.state} - ${h.pincode}</span><br>
+        <button onclick="bookTeleconsultation('${h.name}')" 
+          class="mt-2 px-3 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700">
+          Book Teleconsultation
+        </button>
+      </div>
+    `;
+  });
+  resultsContainer.innerHTML = html;
+}
+
+window.bookTeleconsultation = function(hospitalName) {
+  alert(`Initiating teleconsultation booking at ${hospitalName}`);
+};
+     
+
+    // ---------- Chatbot ----------
+    const chatbox = document.getElementById('chatbox');
+    const chatForm = document.getElementById('chatForm');
+    const userInputEl = document.getElementById('userInput');
+    const clearChatBtn = document.getElementById('clearChatBtn');
+    const endConvBtn = document.getElementById('endConvBtn');
+
+    function appendUserMessage(text) {
+      const div = document.createElement('div');
+      div.className = 'user-message';
+      div.innerHTML = `<div class="font-medium text-blue-600 mb-1 text-sm">You</div><div>${escapeHtml(text)}</div>`;
+      chatbox.appendChild(div);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function appendBotMessage(text) {
+      const div = document.createElement('div');
+      div.className = 'bot-message';
+      div.innerHTML = `<div class="font-medium text-red-600 mb-1 text-sm">SwasthyaAI</div><div>${escapeHtml(text)}</div>`;
+      chatbox.appendChild(div);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function onChatSubmit(e) {
+      e.preventDefault();
+      const text = userInputEl.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      userInputEl.value = '';
+      // fake processing delay
+      setTimeout(() => {
+        appendBotMessage(getBotResponse(text));
+      }, 700);
+    }
+
+    function getBotResponse(userText) {
+      const text = userText.toLowerCase();
+      if (text.includes('fever') || text.includes('headache')) {
+        return "Fever with headache could indicate several conditions. How long have you had these symptoms?";
+      } else if (text.includes('cough') || text.includes('cold')) {
+        return "For cough and cold, I recommend rest, hydration, and OTC remedies. Are you experiencing other symptoms?";
+      } else if (text.includes('appointment') || text.includes('doctor')) {
+        return "You can book appointments with specialists via the 'Find Hospitals' section. Would you like guidance?";
+      } else if (text.includes('hello') || text.includes('hi')) {
+        return "Hi! Tell me what you're feeling and I'll try to help.";
+      } else {
+        return `I understand you're asking about "${userText}". Could you describe your symptoms in more detail?`;
+      }
+    }
+
+    // Clear chat - resets to initial bot messages
+    clearChatBtn.addEventListener('click', () => {
+      chatbox.innerHTML = '';
+      appendBotMessage("Hello! I'm your AI health assistant. How can I help you today?");
+      appendBotMessage("You can ask me about symptoms, medications, or general health advice.");
+    });
+
+    // End conversation - disables input and shows a message
+    endConvBtn.addEventListener('click', () => {
+      appendBotMessage("Conversation ended. If you need further help, refresh or press 'Clear Chat'.");
+      userInputEl.disabled = true;
+      chatForm.querySelector('button[type="submit"]').disabled = true;
+    });
+
+    // allow re-enabling input if user focuses input after endConv (optional)
+    userInputEl.addEventListener('focus', () => {
+      if (userInputEl.disabled) {
+        // re-enable with confirmation
+        if (confirm("Conversation was ended. Do you want to start a new conversation?")) {
+          userInputEl.disabled = false;
+          chatForm.querySelector('button[type="submit"]').disabled = false;
+          clearChatBtn.click();
+        }
+      }
+    });
+
+    // initialize scroll to bottom
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+  </script>
+</body>
+</html>
