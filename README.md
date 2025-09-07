@@ -1,5 +1,10 @@
-Swasthya AI is an AI-powered healthcare web application designed to provide intelligent symptom checking, teleconsultation access, and visual health insights for users. This project focuses on the frontend development of the platform using modern web technologies and a mobile-first design approach.
+**SwasthyaAI**
 
+**SwasthyaAI is an AI-powered healthcare companion built to ensure timely, accessible, and smart pre-diagnosis assistance for individuals, especially in resource-limited regions of India.**
+
+🚀 **SwasthyaAI is a lightweight frontend project simulating an AI health assistant, focused on providing user-friendly symptom checking and guidance through an interactive interface.**
+
+---
 
 🚀 Features:
 🧠 AI-based Symptom Checker UI
@@ -10,10 +15,20 @@ Swasthya AI is an AI-powered healthcare web application designed to provide inte
 
 📱 Fully responsive design for mobile & desktop
 
-⚙️ Structured with reusable React components (or HTML/CSS if applicable)
+
+💡 Impact
+
+🌱 Democratizes healthcare in rural India
+
+🌱 Promotes preventive care and reduces unnecessary hospital visits
+
+🌱 Supports multi-language accessibility
+
+🌱 Aligns with Ayushman Bharat & Digital India initiatives
+
 
 ⚙️ Tech Stack:
-React.js / HTML5, CSS3, Tailwind CSS
+  HTML5, CSS3, js
 
 Hosted in: Firebase Studio (Cloud Workstation)
 
